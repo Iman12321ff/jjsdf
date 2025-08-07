@@ -3,70 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Animasi Bucin</title>
+  <title>Pencocokan Jodoh</title>
   <style>
     body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(to bottom, #ff99cc, #ffe6f0);
-      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #f9c5d1, #fbd786);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
     }
 
     h1 {
-      font-size: 2em;
       color: #d63384;
-      text-shadow: 1px 1px 2px #fff;
-      animation: pulse 2s infinite;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
     }
 
-    .heart {
-      position: absolute;
-      color: red;
-      font-size: 20px;
-      animation: fall linear infinite;
+    button {
+      background-color: #ff69b4;
+      color: white;
+      cursor: pointer;
     }
 
-    @keyframes fall {
-      0% {
-        transform: translateY(-10%) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
+    #result {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff1493;
     }
   </style>
 </head>
 <body>
-  <h1>Paras Pratiwi❤️</h1>
+
+  <h1>Cek Kecocokan Jodoh ❤️</h1>
+  <input type="text" id="namaLaki" placeholder="Nama Laki-laki">
+  <input type="text" id="namaPerempuan" placeholder="Nama Perempuan">
+  <br>
+  <button onclick="cekJodoh()">Cek Sekarang</button>
+
+  <div id="result"></div>
 
   <script>
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
-      heart.innerHTML = '❤️';
-      document.body.appendChild(heart);
+    function cekJodoh() {
+      const namaLaki = document.getElementById("namaLaki").value.trim().toLowerCase();
+      const namaCewe = document.getElementById("namaPerempuan").value.trim().toLowerCase();
+      const hasil = document.getElementById("result");
 
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
+      if (namaLaki === "iman" && namaCewe === "paras") {
+        hasil.innerHTML = "💘 Kecocokan kamu 100000000000% 😍 Jodoh dunia akhirat!";
+      } else {
+        const persen = Math.floor(Math.random() * 100) + 1;
+        hasil.innerHTML = `❤️ Kecocokan kamu ${persen}%`;
+      }
     }
-
-    setInterval(createHeart, 200);
   </script>
+
 </body>
 </html>
